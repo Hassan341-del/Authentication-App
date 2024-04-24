@@ -97,7 +97,7 @@ export default function Container() {
     const provider = new GoogleAuthProvider()
     const auth = getAuth();
     signInWithPopup(auth, provider)
-    .then((response) => {
+    .then(() => {
       setState((prevState) => ({
         ...prevState,
         message : "Registration Successful",
@@ -105,14 +105,9 @@ export default function Container() {
       }))
     })
   }
-  const googleLoginHandler = () => {
-    const provider = new GoogleAuthProvider()
-    const auth = getAuth();
-    signInWithPopup(auth, provider)
-  }
   return (
     <>
-     {state.page ? <Register switch={pageSwitchHandler} registerUser={registrationHandler} google={googleRegistrationHandler} message={state.message} type={state.type}/> : <Login switch={pageSwitchHandler} loginUser={loginHandler} google={googleLoginHandler} message={state.message} type={state.type}/>} 
+     {state.page ? <Register switch={pageSwitchHandler} registerUser={registrationHandler} google={googleRegistrationHandler} message={state.message} type={state.type}/> : <Login switch={pageSwitchHandler} loginUser={loginHandler}  message={state.message} type={state.type}/>} 
     </>
   )
 }
