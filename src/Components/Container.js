@@ -122,7 +122,6 @@ export default function Container() {
     })
   }
   const faceookRegistrationHandler = () => {
-    alert("hi")
     const provider = new FacebookAuthProvider();
     const auth = getAuth()
     signInWithPopup(auth, provider)
@@ -139,7 +138,6 @@ export default function Container() {
     })
   }
   const facebookLoginHandler = () => {
-    alert("hi")
     const provider = new FacebookAuthProvider()
     const auth = getAuth()
     signInWithPopup(auth, provider)
