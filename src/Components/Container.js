@@ -109,9 +109,20 @@ export default function Container() {
       console.log(error)
     })
   }
+  const googleLoginHandler = () => {
+    const provider = new GoogleAuthProvider()
+    const auth = getAuth();
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      console.log(result)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
   return (
     <>
-     {state.page ? <Register switch={pageSwitchHandler} registerUser={registrationHandler} google={googleRegistrationHandler} message={state.message} type={state.type}/> : <Login switch={pageSwitchHandler} loginUser={loginHandler}  message={state.message} type={state.type}/>} 
+     {state.page ? <Register switch={pageSwitchHandler} registerUser={registrationHandler} googleRegistration={googleRegistrationHandler} message={state.message} type={state.type}/> : <Login switch={pageSwitchHandler} loginUser={loginHandler} googleLogin={googleLoginHandler} message={state.message} type={state.type}/>} 
     </>
   )
 }
