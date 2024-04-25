@@ -51,7 +51,7 @@ export default function Login(props) {
                 <button className='btn'> <i className='fab fa-apple'></i> Apple</button>
             </div>
             <div className="facebook">
-                <button className='btn'> <i className='fab fa-facebook'></i> Faceook </button>
+                <button className='btn' onClick={props.facebookLogin}> <i className='fab fa-facebook'></i> Faceook </button>
             </div>
           </div>
         </div>

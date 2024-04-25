@@ -3,7 +3,7 @@ import Register from './Register'
 import Login from './Login'
 import { initializeApp } from "firebase/app";
 import { getDatabase, set } from 'firebase/database';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: "AIzaSyC9mDmMqw1Le6AGw46x40Cn59o5b4emN1k",
@@ -114,6 +114,37 @@ export default function Container() {
     const auth = getAuth();
     signInWithPopup(auth, provider)
     .then((result) => {
+      alert("Login Successful")
+      console.log(result)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+  const faceookRegistrationHandler = () => {
+    alert("hi")
+    const provider = new FacebookAuthProvider();
+    const auth = getAuth()
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      setState((prevState) => ({
+        ...prevState,
+        message : "Registration Successfull",
+        type : 1
+      }))
+      console.log(result)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+  const facebookLoginHandler = () => {
+    alert("hi")
+    const provider = new FacebookAuthProvider()
+    const auth = getAuth()
+    signInWithPopup(auth, provider)
+    .then((result) => {
+      alert("Login Succesful")
       console.log(result)
     })
     .catch((error) => {
@@ -122,7 +153,8 @@ export default function Container() {
   }
   return (
     <>
-     {state.page ? <Register switch={pageSwitchHandler} registerUser={registrationHandler} googleRegistration={googleRegistrationHandler} message={state.message} type={state.type}/> : <Login switch={pageSwitchHandler} loginUser={loginHandler} googleLogin={googleLoginHandler} message={state.message} type={state.type}/>} 
+     {state.page ? <Register switch={pageSwitchHandler} registerUser={registrationHandler} googleRegistration={googleRegistrationHandler} facebookRegistration={faceookRegistrationHandler} message={state.message} type={state.type}/> : <Login switch={pageSwitchHandler} loginUser={loginHandler} googleLogin={googleLoginHandler} facebookLogin={facebookLoginHandler} message={state.message} type={state.type}/>} 
     </>
   )
 }
+
