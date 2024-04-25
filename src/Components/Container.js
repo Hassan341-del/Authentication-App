@@ -97,12 +97,16 @@ export default function Container() {
     const provider = new GoogleAuthProvider()
     const auth = getAuth();
     signInWithPopup(auth, provider)
-    .then(() => {
+    .then((result) => {
       setState((prevState) => ({
         ...prevState,
         message : "Registration Successful",
         type : 1
       }))
+      console.log(result)
+    })
+    .catch((error) => {
+      console.log(error)
     })
   }
   return (
