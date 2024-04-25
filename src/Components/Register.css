@@ -87,11 +87,7 @@ form > input, .btn {
 .facebook > button {
     background-color: blue;
 }
-.apple > button {
-    background-color: black;
-    color: white;
-}
-.google > button, .facebook > button, .apple > button {
+.google > button, .facebook > button {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-style: normal;
@@ -101,12 +97,9 @@ form > input, .btn {
 .google > button:hover {
     background-color: red;
 }
-.apple > button:hover {
-    background-color: black;
-}
 .facebook > button:hover {
     background-color: blue;
 }
-.google > button:hover, .apple > button:hover, .facebook > button:hover {
+.google > button:hover, .facebook > button:hover {
     color: white;
 }

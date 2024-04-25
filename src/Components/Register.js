@@ -66,9 +66,6 @@ export default function Register(props) {
             <div className="google">
                 <button className='btn' onClick={props.googleRegistration}> <i className='fab fa-google'></i> Google </button>
             </div>
-            <div className="apple">
-                <button className='btn'> <i className='fab fa-apple'></i> Apple</button>
-            </div>
             <div className="facebook">
                 <button className='btn' onClick={props.facebookRegistration}> <i className='fab fa-facebook'></i> Faceook </button>
             </div>

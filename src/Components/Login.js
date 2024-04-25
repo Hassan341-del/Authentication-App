@@ -47,9 +47,6 @@ export default function Login(props) {
             <div className="google">
                 <button className='btn' onClick={props.googleLogin}> <i className='fab fa-google'></i> Google </button>
             </div>
-            <div className="apple">
-                <button className='btn'> <i className='fab fa-apple'></i> Apple</button>
-            </div>
             <div className="facebook">
                 <button className='btn' onClick={props.facebookLogin}> <i className='fab fa-facebook'></i> Faceook </button>
             </div>
