@@ -21,16 +21,9 @@ const auth = getAuth(app)
 
 export default function Container() {
   const [state, setState] = useState({
-    page : 1,
     message : "",
     type : 1
   })
-  // const pageSwitchHandler = (e) => {
-  //   setState({
-  //     page : !state.page
-  //   })
-  //   e.preventDefault()
-  // }
   const registrationHandler = (e) => {
     e.preventDefault()
     const email = e.target.email.value
