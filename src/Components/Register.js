@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './Register.css'
+import { Link } from 'react-router-dom'
 
 export default function Register(props) {
     const [password, setPassword] = useState("")
@@ -59,9 +60,10 @@ export default function Register(props) {
               }
               <input type={showConfirmPassword ? 'text' : 'password'} class="form-control" id="confirm-password" placeholder="Confirm Password" value={confirmPassword} onChange={handleConfirmPasswordInput} name='confirmPassword'></input>
               </div>
+              
               <div className="control">
                     <div className="sign-in">
-                        <a href='#' onClick={props.switch}>Sign In</a>
+                        <Link to='/login'>Sign In</Link>
                     </div>
                 </div>
               <button className='btn btn-primary login-btn'>Sign Up</button>

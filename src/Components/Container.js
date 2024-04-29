@@ -4,7 +4,7 @@ import Login from './Login'
 import { initializeApp } from "firebase/app";
 import { getDatabase, set } from 'firebase/database';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from 'firebase/auth'
-
+import {BrowserRouter,Routes, Route} from 'react-router-dom'
 const firebaseConfig = {
   apiKey: "AIzaSyC9mDmMqw1Le6AGw46x40Cn59o5b4emN1k",
   authDomain: "authentication-app-bd5a7.firebaseapp.com",
@@ -25,12 +25,12 @@ export default function Container() {
     message : "",
     type : 1
   })
-  const pageSwitchHandler = (e) => {
-    setState({
-      page : !state.page
-    })
-    e.preventDefault()
-  }
+  // const pageSwitchHandler = (e) => {
+  //   setState({
+  //     page : !state.page
+  //   })
+  //   e.preventDefault()
+  // }
   const registrationHandler = (e) => {
     e.preventDefault()
     const email = e.target.email.value
@@ -150,8 +150,11 @@ export default function Container() {
     })
   }
   return (
-    <>
-     {state.page ? <Register switch={pageSwitchHandler} registerUser={registrationHandler} googleRegistration={googleRegistrationHandler} facebookRegistration={faceookRegistrationHandler} message={state.message} type={state.type}/> : <Login switch={pageSwitchHandler} loginUser={loginHandler} googleLogin={googleLoginHandler} facebookLogin={facebookLoginHandler} message={state.message} type={state.type}/>} 
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={ <Register registerUser={registrationHandler} googleRegistration={googleRegistrationHandler} facebookRegistration={faceookRegistrationHandler} message={state.message} type={state.type} /> } />
+        <Route path='/login' element={ <Login loginUser={loginHandler} googleLogin={googleLoginHandler} facebookLogin={facebookLoginHandler} message={state.message} type={state.type} /> } />
+      </Routes>
+    </BrowserRouter>
   )
 }

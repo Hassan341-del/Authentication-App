@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Login.css';
 
 export default function Login(props) {
@@ -37,10 +38,10 @@ export default function Login(props) {
             </div>
             <div className="controls">
               <div className="forgot-password">
-                <a href='#' onClick={props.forgotPassword}>Forgot Password</a>
+                <Link to='#' onClick={props.forgotPassword}>Forgot Password</Link>
               </div>
               <div className="sign-up">
-                <a href='#' onClick={props.switch}>Sign Up</a>
+                <Link to="/">Sign Up</Link>
               </div>
             </div>
             <button className='btn btn-primary login-btn'>Login</button>
