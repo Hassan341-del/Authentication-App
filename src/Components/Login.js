@@ -41,7 +41,7 @@ export default function Login(props) {
                 <Link to='#' onClick={props.forgotPassword}>Forgot Password</Link>
               </div>
               <div className="sign-up">
-                <Link to="/">Sign Up</Link>
+                <Link to="/signup">Sign Up</Link>
               </div>
             </div>
             <button className='btn btn-primary login-btn'>Login</button>

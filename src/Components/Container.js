@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import Home from './Home'
+import AboutUs from './AboutUs'
+import Services from './Services'
+import ContactUs from './ContactUs'
 import Register from './Register'
 import Login from './Login'
 import Header from './Header'
@@ -8,7 +11,7 @@ import Page404 from './Page404'
 import { initializeApp } from "firebase/app";
 import { getDatabase, set } from 'firebase/database';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from 'firebase/auth'
-import {BrowserRouter,Routes, Route} from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
 const firebaseConfig = {
   apiKey: "AIzaSyC9mDmMqw1Le6AGw46x40Cn59o5b4emN1k",
   authDomain: "authentication-app-bd5a7.firebaseapp.com",
@@ -75,7 +78,7 @@ export default function Container() {
       else {
         setState((prevState) => ({
           ...prevState,
-          message : "Your Email is not verified yet!",
+          message : "Your Email is not verified yet! Please Check your mail box",
           type : 0
         }))
       }
@@ -149,14 +152,15 @@ export default function Container() {
   return (
     <>
     <Header />
-    <BrowserRouter>
       <Routes>
-        {/* <Route path='/' element={ <Home /> } /> */}
-        <Route path='/' element={ <Register registerUser={registrationHandler} googleRegistration={googleRegistrationHandler} facebookRegistration={faceookRegistrationHandler} message={state.message} type={state.type} /> } />
+      <Route path="/" element={<Home />} />
+      <Route path="/about-us" element={<AboutUs />} />
+      <Route path="/services" element={<Services />} />
+      <Route path="/contact-us" element={<ContactUs />} />
+        <Route path='/signup' element={ <Register registerUser={registrationHandler} googleRegistration={googleRegistrationHandler} facebookRegistration={faceookRegistrationHandler} message={state.message} type={state.type} /> } />
         <Route path='/signin' element={ <Login loginUser={loginHandler} googleLogin={googleLoginHandler} facebookLogin={facebookLoginHandler} message={state.message} type={state.type} /> } />
         <Route path='*' element={ <Page404 /> }/>
       </Routes>
-    </BrowserRouter>
     <Footer />
     </>
   )
