@@ -29,16 +29,16 @@ form > label {
 }
 .show-password {
     position: absolute;
-    margin-left: 17.5em;
-    margin-top: 2.1em;
+    right: 30px;
+    top: 8px;
     z-index: 1;
     font-size: 20px;
     cursor: pointer;
 }
 .show-confirm-password {
     position: absolute;
-    margin-left: 14.1em;
-    margin-top: 2.1em;
+    right: 30px;
+    top: 8px;
     font-size: 20px;
     cursor: pointer;
 }

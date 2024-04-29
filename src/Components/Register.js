@@ -40,6 +40,7 @@ export default function Register(props) {
               <label htmlFor="email" class="form-label">Email</label>
               <input type='email' class="form-control" id="email" placeholder="Email" name='email'></input>
               <label htmlFor="password" class="form-label">Password</label>
+              <div className="position-relative">
               {
                 password && (
 
@@ -47,7 +48,9 @@ export default function Register(props) {
                 )
               }
               <input type={showPassword ? 'text' : 'password'} class="form-control" id="password" placeholder="Password" value={password} onChange={handlePAsswordInput} name='password'></input>
+              </div>
               <label htmlFor="confirm-password" class="form-label">Confirm Password</label>
+              <div className="position-relative">
               {
                 confirmPassword && (
 
@@ -55,6 +58,7 @@ export default function Register(props) {
                 )
               }
               <input type={showConfirmPassword ? 'text' : 'password'} class="form-control" id="confirm-password" placeholder="Confirm Password" value={confirmPassword} onChange={handleConfirmPasswordInput} name='confirmPassword'></input>
+              </div>
               <div className="control">
                     <div className="sign-in">
                         <a href='#' onClick={props.switch}>Sign In</a>

@@ -27,12 +27,14 @@ export default function Login(props) {
             <label htmlFor="email" className="form-label">Email</label>
             <input type='email' className="form-control" id="email" placeholder="Email" name='email'/>
             <label htmlFor="password" className="form-label">Password</label>
+            <div className="position-relative">
             {
                 password !== "" && (
                     <i className={`fa-regular fa-eye${showPassword === true ? "-slash" : ""} show-password`} onClick={togglePassword}></i>
                 )
             }
             <input type={showPassword ? 'text' : 'password'} className="form-control" id="password" placeholder="Password" value={password} name='password' onChange={handlePassordInput}/>
+            </div>
             <div className="controls">
               <div className="forgot-password">
                 <a href='#' onClick={props.forgotPassword}>Forgot Password</a>
