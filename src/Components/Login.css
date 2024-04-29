@@ -6,7 +6,7 @@
 }
 .child {
     background-color: white;
-    width: 30%;
+    width: 40%;
     border-radius: 10px;
 }
 form {
@@ -97,4 +97,17 @@ form > input, .btn {
 }
 .google > button:hover, .facebook > button:hover {
     color: white;
+}
+@media (min-width:320px) and (max-width:1023px) {
+    .child {
+        width: 90% !important;
+    }
+    form {
+        padding: 50px 25px 0px 25px !important;
+    }
+    .social {
+        padding-bottom: 50px !important;
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+    }
 }

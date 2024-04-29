@@ -6,12 +6,11 @@
 }
 .child {
     background-color: white;
-    width: 30%;
+    width: 50%;
     border-radius: 10px;
 }
 form {
     padding: 100px 50px 0px 50px;
-
 }
 .login  {
     font-family: "Poppins", sans-serif;
@@ -80,6 +79,8 @@ form > input, .btn {
     display: flex;
     justify-content: space-between;
     padding-bottom: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 .google > button {
     background-color: red;
@@ -102,4 +103,17 @@ form > input, .btn {
 }
 .google > button:hover, .facebook > button:hover {
     color: white;
+}
+@media (min-width:320px) and (max-width:1023px) {
+    .child {
+        width: 90% !important;
+    }
+    form {
+        padding: 50px 25px 0px 25px !important;
+    }
+    .social {
+        padding-bottom: 50px !important;
+        padding-left: 25px !important;
+        padding-right: 25px !important;
+    }
 }
