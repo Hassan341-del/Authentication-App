@@ -23,7 +23,7 @@ export default function Login(props) {
       <div className="parent">
         <div className="child">
           <form action="" onSubmit={props.loginUser}>
-            <h3 className='text-center login'>Login</h3>
+            <h3 className='text-center login'>Sign In</h3>
             <p className={errorMessageClass.join(" ")}>{props.message}</p>
             <label htmlFor="email" className="form-label">Email</label>
             <input type='email' className="form-control" id="email" placeholder="Email" name='email'/>

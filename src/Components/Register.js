@@ -63,7 +63,7 @@ export default function Register(props) {
               
               <div className="control">
                     <div className="sign-in">
-                        <Link to='/login'>Sign In</Link>
+                        <Link to='/signin'>Sign In</Link>
                     </div>
                 </div>
               <button className='btn btn-primary login-btn'>Sign Up</button>

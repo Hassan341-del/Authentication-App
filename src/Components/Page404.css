@@ -1,0 +1,9 @@
+.lottie-parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.lottie {
+    width: 50%;
+}

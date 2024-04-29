@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
+import Home from './Home'
 import Register from './Register'
 import Login from './Login'
+import Header from './Header'
+import Footer from './Footer'
+import Page404 from './Page404'
 import { initializeApp } from "firebase/app";
 import { getDatabase, set } from 'firebase/database';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from 'firebase/auth'
@@ -143,11 +147,17 @@ export default function Container() {
     })
   }
   return (
+    <>
+    <Header />
     <BrowserRouter>
       <Routes>
+        {/* <Route path='/' element={ <Home /> } /> */}
         <Route path='/' element={ <Register registerUser={registrationHandler} googleRegistration={googleRegistrationHandler} facebookRegistration={faceookRegistrationHandler} message={state.message} type={state.type} /> } />
-        <Route path='/login' element={ <Login loginUser={loginHandler} googleLogin={googleLoginHandler} facebookLogin={facebookLoginHandler} message={state.message} type={state.type} /> } />
+        <Route path='/signin' element={ <Login loginUser={loginHandler} googleLogin={googleLoginHandler} facebookLogin={facebookLoginHandler} message={state.message} type={state.type} /> } />
+        <Route path='*' element={ <Page404 /> }/>
       </Routes>
     </BrowserRouter>
+    <Footer />
+    </>
   )
 }
