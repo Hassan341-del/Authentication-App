@@ -63,8 +63,7 @@ a {
 form > input, .btn {
     width: 100%;
 }
-.login-btn {
-    margin-top: 20px;
+.signin-btn {
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-style: normal;
@@ -88,6 +87,7 @@ form > input, .btn {
     font-style: normal;
     color: white;
     margin-top: 20px;
+    padding: 10px 35px;
 }
 .google > button:hover {
     background-color: red;

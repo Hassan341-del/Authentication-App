@@ -36,6 +36,7 @@ export default function Login(props) {
             }
             <input type={showPassword ? 'text' : 'password'} className="form-control" id="password" placeholder="Password" value={password} name='password' onChange={handlePassordInput}/>
             </div>
+            <button className='btn btn-primary signin-btn'>Sign In</button>
             <div className="controls">
               <div className="forgot-password">
                 <Link to='#' onClick={props.forgotPassword}>Forgot Password</Link>
@@ -44,7 +45,6 @@ export default function Login(props) {
                 <Link to="/signup">Sign Up</Link>
               </div>
             </div>
-            <button className='btn btn-primary login-btn'>Login</button>
           </form>
           <div className="social">
             <div className="google">

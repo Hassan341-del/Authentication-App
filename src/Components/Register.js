@@ -61,12 +61,12 @@ export default function Register(props) {
               <input type={showConfirmPassword ? 'text' : 'password'} class="form-control" id="confirm-password" placeholder="Confirm Password" value={confirmPassword} onChange={handleConfirmPasswordInput} name='confirmPassword'></input>
               </div>
               
+              <button className='btn btn-primary signup-btn'>Sign Up</button>
               <div className="control">
                     <div className="sign-in">
                         <Link to='/signin'>Sign In</Link>
                     </div>
                 </div>
-              <button className='btn btn-primary login-btn'>Sign Up</button>
           </form>
           <div className="social">
             <div className="google">

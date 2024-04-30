@@ -13,7 +13,7 @@ export default function Header() {
           </button>
           <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-            <Link to="/" className="nav-link active">Home</Link>
+            <Link to="/" className="nav-link">Home</Link>
             <Link to="/about-us" className="nav-link">About Us</Link>
             <Link to="/services" className="nav-link">Services</Link>
             <Link to="/contact-us" className="nav-link">Contact Us</Link>
