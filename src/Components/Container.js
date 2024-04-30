@@ -10,8 +10,8 @@ import Footer from './Footer'
 import Page404 from './Page404'
 import { initializeApp } from "firebase/app";
 import { getDatabase, set } from 'firebase/database';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, sendPasswordResetEmail, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup } from 'firebase/auth'
-import {Routes, Route} from 'react-router-dom'
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
+import {Routes, Route, useNavigate} from 'react-router-dom'
 const firebaseConfig = {
   apiKey: "AIzaSyC9mDmMqw1Le6AGw46x40Cn59o5b4emN1k",
   authDomain: "authentication-app-bd5a7.firebaseapp.com",
@@ -27,6 +27,7 @@ const database = getDatabase(app);
 const auth = getAuth(app)
 
 export default function Container() {
+  const navigate = useNavigate();
   const [state, setState] = useState({
     message : "",
     type : 1
@@ -71,9 +72,10 @@ export default function Container() {
       if (data.user.emailVerified === true) {
         setState((prevState) => ({
           ...prevState,
-          message : "Login Successfull",
-          type : 1
+          // message : "Login Successfull",
+          // type : 1
         }))
+        navigate("/")
       }
       else {
         setState((prevState) => ({
@@ -100,9 +102,10 @@ export default function Container() {
     .then((result) => {
       setState((prevState) => ({
         ...prevState,
-        message : "Registration Successful",
-        type : 1
+        // message : "Login Succesful",
+        // type : 1
       }))
+      navigate("/")
       console.log(result)
     })
     .catch((error) => {
@@ -114,8 +117,9 @@ export default function Container() {
     const auth = getAuth();
     signInWithPopup(auth, provider)
     .then((result) => {
-      alert("Login Successful")
+      // alert("Login Successful")
       console.log(result)
+      navigate("/")
     })
     .catch((error) => {
       console.log(error)
@@ -128,10 +132,11 @@ export default function Container() {
     .then((result) => {
       setState((prevState) => ({
         ...prevState,
-        message : "Registration Successfull",
-        type : 1
+        // message : "Login Succesful",
+        // type : 1
       }))
       console.log(result)
+      navigate("/")
     })
     .catch((error) => {
       console.log(error)
@@ -142,24 +147,36 @@ export default function Container() {
     const auth = getAuth()
     signInWithPopup(auth, provider)
     .then((result) => {
-      alert("Login Succesful")
+      // alert("Login Succesful")
       console.log(result)
+      navigate("/")
     })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+  const handleSignOut = () => {
+    const auth = getAuth()
+    signOut(auth)
+    .then(() => {
+      console.log("Sign Out Successfull")
+    })
+    navigate("/signin")
     .catch((error) => {
       console.log(error)
     })
   }
   return (
     <>
-    <Header />
+    <Header signOut={handleSignOut}/>
       <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/about-us" element={<AboutUs />} />
       <Route path="/services" element={<Services />} />
       <Route path="/contact-us" element={<ContactUs />} />
-        <Route path='/signup' element={ <Register registerUser={registrationHandler} googleRegistration={googleRegistrationHandler} facebookRegistration={faceookRegistrationHandler} message={state.message} type={state.type} /> } />
-        <Route path='/signin' element={ <Login loginUser={loginHandler} googleLogin={googleLoginHandler} facebookLogin={facebookLoginHandler} message={state.message} type={state.type} /> } />
-        <Route path='*' element={ <Page404 /> }/>
+      <Route path='/signup' element={ <Register registerUser={registrationHandler} googleRegistration={googleRegistrationHandler} facebookRegistration={faceookRegistrationHandler} message={state.message} type={state.type} /> } />
+       <Route path='/signin' element={ <Login loginUser={loginHandler} googleLogin={googleLoginHandler} facebookLogin={facebookLoginHandler} message={state.message} type={state.type} /> } />
+       <Route path='*' element={ <Page404 /> }/>
       </Routes>
     <Footer />
     </>

@@ -1,5 +1,7 @@
 .nav-link {
     padding-right: 30px !important;
-    color: rgba(0, 0, 0, 0.756);
-    font-weight: bold;
+    color: black;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    font-size: 18px;
 }
