@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
 import './Header.css'
 
 export default function Header(props) {
+  const auth = getAuth()
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
