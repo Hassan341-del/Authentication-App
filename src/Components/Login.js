@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
-
 export default function Login(props) {
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
+    const [loading, setLoading] = useState(false);
     const handlePassordInput = (e) => {
         setPassword(e.target.value)
     }
     const togglePassword = () => {
         setShowPassword(!showPassword)
+    }
+    const handleLoading = () => {
+      setLoading(true)
     }
     let errorMessageClass = ["text-center", "error-message"]
     if(props.type) {
@@ -34,9 +37,10 @@ export default function Login(props) {
                     <i className={`fa-regular fa-eye${showPassword === true ? "-slash" : ""} show-password`} onClick={togglePassword}></i>
                 )
             }
-            <input type={showPassword ? 'text' : 'password'} className="form-control" id="password" placeholder="Password" value={password} name='password' onChange={handlePassordInput}/>
+            <input type={showPassword ? 'text' : 'password'} className="form-control" id="password" placeholder="Password" value={password} name='password' onChange={handlePassordInput} />
             </div>
-            <button className='btn btn-primary signin-btn'>Sign In</button>
+            <button className='btn btn-primary signin-btn ' onClick={handleLoading}> Sign In </button>
+
             <div className="controls">
               <div className="forgot-password">
                 <Link to='#' onClick={props.forgotPassword}>Forgot Password</Link>

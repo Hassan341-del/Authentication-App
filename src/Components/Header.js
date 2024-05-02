@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
 import './Header.css'
 
 export default function Header(props) {
+  const auth = getAuth();
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,9 +19,14 @@ export default function Header(props) {
             <Link to="/about-us" className="nav-link">About Us</Link>
             <Link to="/services" className="nav-link">Services</Link>
             <Link to="/contact-us" className="nav-link">Contact Us</Link>
-            <Link to="/signup" className="nav-link">Sign Up</Link>
-            <Link to="/signin" className="nav-link">Sign In</Link>
+            {auth?.currentUser?.accessToken ?
             <Link className="nav-link" onClick={props.signOut}>Sign Out</Link>
+            :
+            <>
+              <Link to="/signup" className="nav-link">Sign Up</Link>
+              <Link to="/signin" className="nav-link">Sign In</Link>
+            </>
+          }
             </div>
         </div> 
         </div>

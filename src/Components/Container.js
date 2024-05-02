@@ -9,8 +9,8 @@ import Header from './Header'
 import Footer from './Footer'
 import Page404 from './Page404'
 import { initializeApp } from "firebase/app";
-import { getDatabase, set } from 'firebase/database';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signOut } from 'firebase/auth'
+import { get, getDatabase, set } from 'firebase/database';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, GoogleAuthProvider, FacebookAuthProvider, signInWithPopup, signOut, browserSessionPersistence, setPersistence} from 'firebase/auth'
 import {Routes, Route, useNavigate} from 'react-router-dom'
 const firebaseConfig = {
   apiKey: "AIzaSyC9mDmMqw1Le6AGw46x40Cn59o5b4emN1k",
@@ -45,7 +45,8 @@ export default function Container() {
       }))
       return
     }
-    createUserWithEmailAndPassword(auth, email, password).then((data) => {
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((data) => {
       sendEmailVerification(auth.currentUser)
       setState((prevState) => ({
         ...prevState,
@@ -62,6 +63,8 @@ export default function Container() {
         message : error.message,
         type : 0
       }))
+      e.target.reset()
+
     })
   }
   const loginHandler = (e) => {
@@ -155,15 +158,33 @@ export default function Container() {
       console.log(error)
     })
   }
+  // const handleSignOut = () => {
+  //   const auth = getAuth()
+  //   setPersistence(auth, browserSessionPersistence)
+  //   signOut(auth)
+  //   .then(() => {
+  //     console.log("Sign Out Successfull")
+  //     navigate("/signin")
+  //   })
+  //   .catch((error) => {
+  //     console.log(error)
+  //   })
+  // }
   const handleSignOut = () => {
     const auth = getAuth()
-    signOut(auth)
+    setPersistence(auth, browserSessionPersistence)
     .then(() => {
-      console.log("Sign Out Successfull")
+      signOut(auth)
+      .then(() => {
+        console.log("Sign Out Successfull")
+        navigate("/signin")
+      })
+      .catch((error) => {
+        console.log(error)
+      })
     })
-    navigate("/signin")
     .catch((error) => {
-      console.log(error)
+      console.log("Set Persistence Error:", error)
     })
   }
   return (

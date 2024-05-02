@@ -44,7 +44,10 @@ form > label {
 #email, #password {
     margin-bottom: 20px;
 }
-#password, .confirm-password {
+#password::-ms-reveal, #password::-webkit-credentials-auto-fill-button, #confirm-password::-ms-reveal, #confirm-password::-webkit-credentials-auto-fill-button {
+    display: none;
+}
+#password {
     position: relative;
     z-index: 0;
 }

@@ -42,6 +42,9 @@ form > label {
     position: relative;
     z-index: 0;
 }
+#password::-ms-reveal, #password::-webkit-credentials-auto-fill-button {
+  display: none;
+}
 input::placeholder {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
