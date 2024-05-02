@@ -39,7 +39,7 @@ export default function Register(props) {
               <h3 className='text-center login'>Sign Up</h3>
               <p className={errorMessageClass.join(" ")}>{props.message}</p>
               <label htmlFor="email" class="form-label">Email</label>
-              <input type='email' class="form-control" id="email" placeholder="Email" name='email'></input>
+              <input type='email' class="form-control" id="email" placeholder="Email" name='email' required></input>
               <label htmlFor="password" class="form-label">Password</label>
               <div className="position-relative">
               {
@@ -48,7 +48,7 @@ export default function Register(props) {
                     <i className={`fa-regular fa-eye${showPassword === true ? '-slash' : ''} show-password`} onClick={()=> togglePassword("password")}></i>
                 )
               }
-              <input type={showPassword ? 'text' : 'password'} class="form-control" id="password" placeholder="Password" value={password} onChange={handlePAsswordInput} name='password'></input>
+              <input type={showPassword ? 'text' : 'password'} class="form-control" id="password" placeholder="Password" value={password} onChange={handlePAsswordInput} name='password' required></input>
               </div>
               <label htmlFor="confirm-password" class="form-label">Confirm Password</label>
               <div className="position-relative">
@@ -58,7 +58,7 @@ export default function Register(props) {
                     <i className={`fa-regular fa-eye${showConfirmPassword === true ? '-slash' : ''} show-confirm-password`} onClick={()=> togglePassword("confirmPassword")}></i>
                 )
               }
-              <input type={showConfirmPassword ? 'text' : 'password'} class="form-control" id="confirm-password" placeholder="Confirm Password" value={confirmPassword} onChange={handleConfirmPasswordInput} name='confirmPassword'></input>
+              <input type={showConfirmPassword ? 'text' : 'password'} class="form-control" id="confirm-password" placeholder="Confirm Password" value={confirmPassword} onChange={handleConfirmPasswordInput} name='confirmPassword' required></input>
               </div>
               
               <button className='btn btn-primary signup-btn'>Sign Up</button>

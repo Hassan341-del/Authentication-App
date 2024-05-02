@@ -4,15 +4,11 @@ import './Login.css';
 export default function Login(props) {
     const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
-    const [loading, setLoading] = useState(false);
     const handlePassordInput = (e) => {
         setPassword(e.target.value)
     }
     const togglePassword = () => {
         setShowPassword(!showPassword)
-    }
-    const handleLoading = () => {
-      setLoading(true)
     }
     let errorMessageClass = ["text-center", "error-message"]
     if(props.type) {
@@ -29,7 +25,7 @@ export default function Login(props) {
             <h3 className='text-center login'>Sign In</h3>
             <p className={errorMessageClass.join(" ")}>{props.message}</p>
             <label htmlFor="email" className="form-label">Email</label>
-            <input type='email' className="form-control" id="email" placeholder="Email" name='email'/>
+            <input type='email' className="form-control" id="email" placeholder="Email" name='email' required/>
             <label htmlFor="password" className="form-label">Password</label>
             <div className="position-relative">
             {
@@ -37,13 +33,13 @@ export default function Login(props) {
                     <i className={`fa-regular fa-eye${showPassword === true ? "-slash" : ""} show-password`} onClick={togglePassword}></i>
                 )
             }
-            <input type={showPassword ? 'text' : 'password'} className="form-control" id="password" placeholder="Password" value={password} name='password' onChange={handlePassordInput} />
+            <input type={showPassword ? 'text' : 'password'} className="form-control" id="password" placeholder="Password" value={password} name='password' onChange={handlePassordInput} required/>
             </div>
-            <button className='btn btn-primary signin-btn ' onClick={handleLoading}> Sign In </button>
+            <button className='btn btn-primary signin-btn '> Sign In </button>
 
             <div className="controls">
               <div className="forgot-password">
-                <Link to='#' onClick={props.forgotPassword}>Forgot Password</Link>
+                <Link to='#' onClick={props.forgotPassword}></Link>
               </div>
               <div className="sign-up">
                 <Link to="/signup">Sign Up</Link>

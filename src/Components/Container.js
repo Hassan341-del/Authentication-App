@@ -158,33 +158,15 @@ export default function Container() {
       console.log(error)
     })
   }
-  // const handleSignOut = () => {
-  //   const auth = getAuth()
-  //   setPersistence(auth, browserSessionPersistence)
-  //   signOut(auth)
-  //   .then(() => {
-  //     console.log("Sign Out Successfull")
-  //     navigate("/signin")
-  //   })
-  //   .catch((error) => {
-  //     console.log(error)
-  //   })
-  // }
   const handleSignOut = () => {
     const auth = getAuth()
-    setPersistence(auth, browserSessionPersistence)
+    signOut(auth)
     .then(() => {
-      signOut(auth)
-      .then(() => {
-        console.log("Sign Out Successfull")
-        navigate("/signin")
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+      console.log("Sign Out Successfull")
+      navigate("/signin")
     })
     .catch((error) => {
-      console.log("Set Persistence Error:", error)
+      console.log(error)
     })
   }
   return (
