@@ -39,7 +39,7 @@ export default function Login(props) {
 
             <div className="controls">
               <div className="forgot-password">
-                <Link to='#' onClick={props.forgotPassword}></Link>
+                {/* <Link to='#'>Forgot Password</Link> */}
               </div>
               <div className="sign-up">
                 <Link to="/signup">Sign Up</Link>
